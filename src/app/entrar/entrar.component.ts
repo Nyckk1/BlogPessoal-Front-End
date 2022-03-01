@@ -12,6 +12,7 @@ import { AuthService } from '../service/auth.service';
 export class EntrarComponent implements OnInit {
 
   userLogin: UserLogin = new UserLogin()
+  
   constructor(
     private auth: AuthService,
     private router: Router
@@ -32,7 +33,7 @@ export class EntrarComponent implements OnInit {
       
       this.router.navigate(['/inicio'])
     }, erro =>{
-      if(erro.status == 500){
+      if(erro.status == 500 || erro.status == 401){
         alert('Usuario ou senha estão incorretos!')
       }
     })
